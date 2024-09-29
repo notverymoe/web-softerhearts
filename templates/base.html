@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+        {% if page.title %}
+        {% set title = page.title %}
+        {% elif section.title %}
+        {% set title = section.title %}
+        {% elif config.title %}
+        {% set title = config.title %}
+        {% endif %}
+
+        {% if page.extra.title_prefix %}
+        {% set title = page.extra.title_prefix %}
+        {% elif section.extra.title_prefix %}
+        {% set title = section.extra.title_prefix %}
+        {% elif config.extra.title_prefix %}
+        {% set title_prefix = config.extra.title_prefix %}
+        {% else %}
+        {% set title_prefix = "" %}
+        {% endif %}
+
+        {% if title %}<title>{{ title_prefix }}{{ title }}</title>{% endif %}
+
+        <link rel="shortcut icon" href="{{ get_url(path='favicon.png', trailing_slash=false) | safe }}"/>
+
+        {% block css %}
+        <link rel="stylesheet" href="{{ get_url(path='style.css', trailing_slash=false) | safe }}"/>
+        {% endblock css %}
+
+    </head>
+    <body>
+        <div class="section-page">
+            <section class="section-header">
+                {% block header %}{% endblock header %}
+            </section>
+            <main class="section-content">
+                {% block content %}{% endblock content %}
+            </main>
+        </div>
+
+
+        <aside class="section-sidebar">
+            {% set tl_section = get_section(path="_index.md", metadata_only=true) %}
+            <a href="{{ tl_section.permalink }}" title="{{ tl_section.title }}">
+                <img class="icon" src="{{ get_url(path=tl_section.extra.icon_src, trailing_slash=false) | safe }}"/>
+            </a>
+            {% for tl_section in tl_section.subsections %}
+                {% set tl_section = get_section(path=tl_section, metadata_only=true) %}
+                <a href="{{ tl_section.permalink }}" title="{{ tl_section.title }}">
+                    <img class="icon colorify" src="{{ get_url(path=tl_section.extra.icon_src, trailing_slash=false) | safe }}"/>
+                </a>
+            {% endfor %}
+        </aside>
+
+    </body>
+</html>

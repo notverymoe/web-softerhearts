@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block header %}
+<h1>{{ section.title }}</h1>
+{% endblock header %}
+
+{% block content %}
+
+{% if paginator %}
+{% set pages = paginator.pages %}
+{% else %}
+{% set pages = section.pages %}
+{% endif %}
+
+<section class="section-cards">
+{% if section.content %}
+    <section class="section-card full-width">
+        {{ section.content | safe }}
+    </section>
+{% endif %}
+{% for page in pages %}
+    <section class="section-card highlight">
+        {% if page.date %}
+            <h1><a href="{{ page.permalink | safe }}">{{ page.date }} - {{ page.title }}</a></h1>
+        {% else %}
+            <h1><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
+        {% endif %}
+        <p>{{ page.description }}</p>
+    </section>
+{% endfor %}
+</section>
+
+{% endblock content %}

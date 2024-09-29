@@ -1,0 +1,18 @@
+{% extends "section.html" %}
+
+{% block content %}
+
+<section class="section-cards">
+    <div class="section-split">
+        <section class="section-card unsized" style="flex-grow: 0; align-self: start;">
+            <img class="rounded" src="{{ get_url(path=section.extra.pfp_src, trailing_slash=false) | safe }}"/>
+            <a class="pa-bottom-right text-shadow" href="{{ section.extra.pfp_link }}">{{ section.extra.pfp_credit }}</a>
+        </section>
+        <section class="section-card unsized">
+            <h1>{{ section.extra.heading }}</h1>
+            {{ section.content | safe }}
+        </section>
+    </div>
+</section>
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
+}
+
+ul, ol {
+    line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 2.0rem; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.6rem; }
+h5 { font-size: 1.4rem; }
+h6 { font-size: 1.2rem; }
+
+ul, ol {
+    padding-left: 4ch;
+}
+
+html, body {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-width: 100vw;
+    
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+
+    text-rendering: optimizeLegibility;
+    image-rendering: optimizeQuality;
+
+    line-height: 1.8;
+}

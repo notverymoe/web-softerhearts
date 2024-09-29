@@ -1,0 +1,23 @@
+
+@mixin rounded {
+    border-radius: 0.5em;
+}
+.rounded { @include rounded; }
+
+
+@mixin pa-bottom-right {
+    position: absolute;
+    right: 1.25em;
+    bottom: 1.25em;
+}
+.pa-bottom-right { @include pa-bottom-right; }
+
+@mixin drop-shadow {
+    box-shadow: 0 0 0.5em 0 black;
+}
+.drop-shadow  { @include drop-shadow ; }
+
+@mixin text-shadow {
+    text-shadow: 0 0 0.25em black, 0 0 0.25em black, 0 0 0.25em black, 0 0 0.25em black;
+}
+.text-shadow  { @include text-shadow ; }

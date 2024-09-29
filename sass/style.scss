@@ -1,0 +1,182 @@
+@use "_fonts.scss";
+@use "_reset.scss";
+@use "_modifiers.scss" as *;
+
+$sidebar-button-size: 2.5em;
+$sidebar-bg: oklch(20% 0.06 300);
+
+$header-bg:  oklch(18% 0.05 300);
+$content-bg: oklch(14% 0.04 300);
+$card-bg:    oklch(18% 0.04 300);
+$card-bg-dark: oklch(16% 0.04 300);
+
+$link-hover: oklch(80% 0.15 300);
+
+body {
+    display: flex; 
+    flex-direction: row-reverse;
+    align-items: stretch;
+    justify-content: stretch;
+
+    color: white;
+    background-color: $content-bg;
+    font-family: 'Roboto';
+}
+
+a {
+    color: white;
+    font-style: normal;
+    &:visited {
+        color: white;
+        font-style: italic;
+    }
+    &:hover {
+        color: $link-hover;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    th {
+        background-color: $sidebar-bg;
+    }
+    td {
+        background-color: $card-bg-dark;
+    }
+    td, th {
+        border: 1px solid;
+        text-align: left !important; // TODO HACK override zola
+        padding: 0.125em 0.5em;
+    }
+}
+
+.section-page {
+    display: flex; 
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+.section-header {
+    background-color: $header-bg;
+    padding: 0.5em 2em;
+    flex-grow: 0;
+    box-shadow: 0 0 1ch 0 black;
+}
+
+.section-content {
+    padding: 0.5em;
+    flex-grow: 1;
+    display: flex; 
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.section-sidebar {
+    min-width: calc($sidebar-button-size + 1em);
+    max-width: calc($sidebar-button-size + 1em);
+    flex-grow: 0;
+    background-color: $sidebar-bg;
+    padding: 0.5em;
+    box-sizing: border-box;
+    box-shadow: 0 0 1ch 0 black;
+
+    .icon {
+        min-height: $sidebar-button-size;
+        max-height: $sidebar-button-size;
+        min-width: $sidebar-button-size;
+        max-width: $sidebar-button-size;
+        cursor: pointer;
+
+        --base-filters: ;
+
+        &.colorify {
+            --base-filters: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(200deg) saturate(400%);
+        }
+
+        filter: var(--base-filters);
+
+        &:hover {
+            filter: var(--base-filters) brightness(150%) blur(0.04em);
+        }
+
+        &:active {
+            filter: var(--base-filters) brightness(75%) blur(0.05em);
+        }
+
+    }
+}
+
+.section-cards {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-content: flex-start;
+    box-sizing: border-box;
+    padding-bottom: 1em;
+    flex-wrap: wrap;
+    overflow-y: auto; 
+}
+
+.section-split {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-items: stretch;
+    > * {
+        flex-grow: 1;
+    }
+}
+
+.section-card {
+    @include rounded;
+
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: $card-bg;
+    margin: 0.5em;
+    padding: 1em; 
+
+    min-height: 12em;
+
+    --card-width: calc(50% - 1em);
+    min-width: var(--card-width);
+    max-width: var(--card-width);
+
+    &.full-width {
+        --card-width: calc(100% - 1em);
+    }
+
+    &.unsized {
+        min-width: unset;
+        max-width: unset;
+    }
+
+    > p + p {
+        padding-top: 1em;
+    }
+
+    &.highlight {
+        background-color: $card-bg-dark;
+        transition: background-color ease-in-out 0.2s;
+        &:hover {
+            background-color: $card-bg;
+        }
+    }
+
+}
+
+@media (max-width: 120ch) {
+    .section-card {
+        --card-width: calc(100% - 1em);
+    }
+}
