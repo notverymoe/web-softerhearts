@@ -3,12 +3,12 @@
 @use "_modifiers.scss" as *;
 
 $sidebar-button-size: 2.5em;
-$sidebar-bg: oklch(20% 0.06 300);
+$sidebar-bg: oklch(15% 0.035 282);
 
-$header-bg:  oklch(18% 0.05 300);
-$content-bg: oklch(14% 0.04 300);
-$card-bg:    oklch(18% 0.04 300);
-$card-bg-dark: oklch(16% 0.04 300);
+$header-bg:    oklch(15% 0.035 282);
+$content-bg:   oklch(11% 0.025 282);
+$card-bg:      oklch(18% 0.04 282);
+$card-bg-dark: oklch(15% 0.035 282);
 
 $link-hover: oklch(80% 0.15 300);
 
@@ -55,8 +55,11 @@ table {
     flex-direction: column;
     align-items: stretch;
     justify-content: stretch;
-    flex-grow: 1;
+    flex: 1;
     box-sizing: border-box;
+    overflow: auto;
+    min-width: 0;
+    width: 0;
 }
 
 .section-header {
@@ -68,7 +71,7 @@ table {
 
 .section-content {
     padding: 0.5em;
-    flex-grow: 1;
+    flex: 1;
     display: flex; 
     flex-direction: column;
     align-items: stretch;
@@ -76,21 +79,34 @@ table {
 }
 
 .section-sidebar {
-    min-width: calc($sidebar-button-size + 1em);
-    max-width: calc($sidebar-button-size + 1em);
-    flex-grow: 0;
-    background-color: $sidebar-bg;
     padding: 0.5em;
+    min-width: calc($sidebar-button-size + 1em);
+    width:     calc($sidebar-button-size + 1em);
+    max-width: calc($sidebar-button-size + 1em);
+    flex: 0;
+    background-color: $sidebar-bg;
     box-sizing: border-box;
     box-shadow: 0 0 1ch 0 black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    .icon {
+    // > * {
+    //     padding: 0.5em;
+    // }
+
+    a, .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         min-height: $sidebar-button-size;
         max-height: $sidebar-button-size;
         min-width: $sidebar-button-size;
         max-width: $sidebar-button-size;
-        cursor: pointer;
+    }
 
+    .icon {
+        cursor: pointer;
         --base-filters: ;
 
         &.colorify {

@@ -13,17 +13,17 @@
         {% set title = config.title %}
         {% endif %}
 
-        {% if page.extra.title_prefix %}
-        {% set title = page.extra.title_prefix %}
-        {% elif section.extra.title_prefix %}
-        {% set title = section.extra.title_prefix %}
-        {% elif config.extra.title_prefix %}
-        {% set title_prefix = config.extra.title_prefix %}
+        {% if page.extra.title_postfix %}
+        {% set title = page.extra.title_postfix %}
+        {% elif section.extra.title_postfix %}
+        {% set title = section.extra.title_postfix %}
+        {% elif config.extra.title_postfix %}
+        {% set title_postfix = config.extra.title_postfix %}
         {% else %}
-        {% set title_prefix = "" %}
+        {% set title_postfix = "" %}
         {% endif %}
 
-        {% if title %}<title>{{ title_prefix }}{{ title }}</title>{% endif %}
+        {% if title %}<title>{{ title }}{{ title_postfix }}</title>{% endif %}
 
         <link rel="shortcut icon" href="{{ get_url(path='favicon.png', trailing_slash=false) | safe }}"/>
 

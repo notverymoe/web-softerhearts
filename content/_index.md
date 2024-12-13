@@ -5,7 +5,8 @@ title = "Homepage"
 icon_src="icons/heart.svg"
 +++
 
-This is SofterHearts. There's not much here, but thanks for stopping by.
-
-You can have this:\
+A badge for your troubles:\
 ![88x31 button icon for softer hearts](icons/8831.png)
+
+Also checkout the sharkey fedi instance:\
+[@my.softerhearts.club](https://my.softerhearts.club/)

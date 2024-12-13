@@ -11,8 +11,6 @@ pfp_link  ="https://picrew.me/en/image_maker/2362681"
 pfp_credit="By 天才のせぇん @ Picrew"
 +++
 
-Hi there, I'm Natalie! 
-
 Here's my specification sheet:
 
 | Key         | Value                  |
@@ -23,3 +21,10 @@ Here's my specification sheet:
 | Pronouns    | She/Her                |
 | Adjectives  | chaotic-bisexual trans |
 | Occupation  | Programmer             |
+
+<br/>Get in touch with me:
+
+| Key         | Value                  |
+|:-----------:|:----------------------:|
+| Fedi        | [@my.softerhearts.club](https://my.softerhearts.club/@natalie) |
+| Github      | [NotVeryMoe](https://github.com/notverymoe) |

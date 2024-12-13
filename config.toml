@@ -6,4 +6,4 @@ build_search_index = false
 highlight_code = false
 
 [extra]
-title_prefix = "[SH] "
+title_postfix = " | SofterHearts"
